@@ -12,7 +12,7 @@ interface TrackRepository
     public function addTrack(Track $track): void;
 
     /**
-     * @throws Tr
+     * @throws TrackNotExist
      */
-    public function getTrack($getTrack): void;
+    public function getTrack(string $name): void;
 }

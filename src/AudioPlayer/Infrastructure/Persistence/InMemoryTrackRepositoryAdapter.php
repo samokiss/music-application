@@ -28,4 +28,9 @@ class InMemoryTrackRepositoryAdapter implements TrackRepository
 
         self::$tracks[] = $track;
     }
+
+    public function getTrack(string $name): void
+    {
+        // TODO: Implement getTrack() method.
+    }
 }
