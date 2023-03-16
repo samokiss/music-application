@@ -11,14 +11,14 @@ jobs:
       - name: Check if user is external
         run: |
           curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/orgs/akeneo/memberships/${{ github.event.pull_request.user.login }}
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/orgs/akeneo/memberships/${{ github.event.pull_request.user.login }}"
           if [ "${{ github.event.pull_request.user.login }}" != "${{ github.event.repository.owner.login }}" ]; then
             echo "User is external"
             curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-                 -H "Accept: application/vnd.github.v3+json" \
-                 "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels" \
-                 -d '{"labels": ["external-user"]}'
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/labels" \
+              -d '{"labels": ["external-user"]}'
           else
             echo "User is part of the organization"
           fi
