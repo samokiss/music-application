@@ -6,4 +6,5 @@ namespace App\AudioPlayer\Domain\Track;
 
 class TrackNotExist extends \Exception
 {
+    //test
 }
